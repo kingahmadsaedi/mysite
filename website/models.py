@@ -8,4 +8,9 @@ class Contact(models.Model):
     message=models.TextField()
     created_date=models.DateTimeField(auto_now_add=True)
     update_date=models.DateTimeField(auto_now=True)
-
+    class Meta:
+        ordering=['created_date']
+        #verbose_name='پست'
+        #verbose_name_plural='پست ها'
+    def __str__(self):
+        return f'{self.name}'
