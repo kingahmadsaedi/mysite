@@ -3,3 +3,4 @@ Django==3.2.25
 pytz==2025.2
 sqlparse==0.5.3
 typing-extensions==4.13.2
+pillow
