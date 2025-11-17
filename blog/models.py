@@ -24,4 +24,7 @@ class Post(models.Model):
         #verbose_name_plural='پست ها'
     
     def __str__(self):
-        return f'{self.title} Post Number {self.id}'
+        return self.title
+        
+    def snippest(self):
+        return self.content[:100]
