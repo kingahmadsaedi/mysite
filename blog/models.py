@@ -25,6 +25,6 @@ class Post(models.Model):
     
     def __str__(self):
         return self.title
-        
+
     def snippest(self):
-        return self.content[:100]
+     return self.content[:50]
