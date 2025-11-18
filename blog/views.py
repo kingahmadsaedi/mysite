@@ -11,9 +11,9 @@ def blog_single(request,pid):
     context={'post':post}
     return render(request,'blog/blog-single.html',context)
 
-def test_view(request,pid):
+def test_view(request):
     
     #post=Post.objects.get(id=pid)
-    post=get_object_or_404(posts,pk=pid)
-    context={'post':post}
-    return render(request,'blog/test-view.html',context)
+    #post=get_object_or_404(posts,pk=pid)
+    #context={'post':post}
+    return render(request,'blog/test-view.html')

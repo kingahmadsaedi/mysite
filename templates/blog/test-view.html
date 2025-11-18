@@ -1,3 +1,4 @@
+{% load blog_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +7,13 @@
     <title>Document</title>
 </head>
 <body>
-    <p>{{post.title}}</p>
+    <p>{% totalposts as tp %}</p>
+    <!--<p>{{tp}}</p>-->
+    {% for post in tp %}
+    <p>{{post}}</p>
+    <p>{{post.content|snippest:100}}</p>
+    {% endfor %}
+    <h1>inclusion tag</h1>
+    {% popularposts %}
 </body>
 </html>
