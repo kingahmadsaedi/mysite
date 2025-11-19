@@ -17,4 +17,4 @@ def popularposts():
 def latestposts(arg=3):
     posts=Post.objects.filter(status=1).order_by('publish_date')[:arg]
     return {'posts':posts}
-
+@register.
