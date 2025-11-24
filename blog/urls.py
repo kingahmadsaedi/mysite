@@ -6,6 +6,7 @@ urlpatterns = [
     path('',blog_view,name='index'),
     path('<int:pid>',blog_single,name='single'),
     path('category/<str:cat_name>',blog_view,name='category'),
+    path('auther/<str:auther_username>',blog_view,name='auther'),
     path('test',test_view,name='test')
 
 ]
