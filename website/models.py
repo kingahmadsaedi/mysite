@@ -14,3 +14,7 @@ class Contact(models.Model):
         #verbose_name_plural='پست ها'
     def __str__(self):
         return f'{self.name}'
+class Newsletter(models.Model):
+    email=models.EmailField()
+    def __str__(self):
+        return self.email
