@@ -41,11 +41,20 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'django.contrib.sites',
     'django.contrib.sitemaps',
-    "debug_toolbar",
+    'django_summernote',
+    'debug_toolbar',
+    'captcha',
     'robots',
     'taggit',
     'blog'
 ]
+#summernote
+SUMMERNOTE_THEME = 'bs4'
+SUMMERNOTE_CONFIG = {
+    # Using SummernoteWidget - iframe mode, default
+    'iframe': True,
+
+}
 #sites
 SITE_ID=4
 #robots
@@ -147,3 +156,5 @@ INTERNAL_IPS = [
     "127.0.0.1",
     
 ]
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
