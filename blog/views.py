@@ -1,7 +1,12 @@
+from email import message
 from unicodedata import category
 from django.shortcuts import render,get_object_or_404
+from django.urls import is_valid_path
 from blog.models import Post,Comment
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
+from blog.forms import CommentForm
+
+from django.contrib import messages
 # Create your views here.
 def blog_view(request,**kwargs):
     posts=Post.objects.filter(status=1)
@@ -23,10 +28,19 @@ def blog_view(request,**kwargs):
     print(context)
     return render(request,'blog/blog-home.html',context)
 def blog_single(request,pid):
+    if request.method=='POST':
+        form=CommentForm(request)
+        if form.is_valid():
+            form.save()
+            message.add_message(request,messages.SUCCESS,'your comment submited successfully')
+        else:
+            message.add_message(request,messages.ERROR,'your comment didnt submited !!!')
+    
     posts=Post.objects.filter(status=1)
     post=get_object_or_404(posts,pk=pid)
     comments=Comment.objects.filter(post=post.id,approved=True)
-    context={'post':post,'comments':comments}
+    form=CommentForm()
+    context={'post':post,'comments':comments,'form':form}
     return render(request,'blog/blog-single.html',context)
 def blog_search(request):
     posts=Post.objects.filter(status=1)
