@@ -28,13 +28,14 @@ def blog_view(request,**kwargs):
     print(context)
     return render(request,'blog/blog-home.html',context)
 def blog_single(request,pid):
-    if request.method=='POST':
-        form=CommentForm(request)
+    
+    if request.method == 'POST':
+        form=CommentForm(request.POST)
         if form.is_valid():
             form.save()
-            message.add_message(request,messages.SUCCESS,'your comment submited successfully')
+            messages.add_message(request,messages.SUCCESS,'your comment submited successfully')
         else:
-            message.add_message(request,messages.ERROR,'your comment didnt submited !!!')
+            messages.add_message(request,messages.ERROR,'your comment didnt submited !!!')
     
     posts=Post.objects.filter(status=1)
     post=get_object_or_404(posts,pk=pid)
