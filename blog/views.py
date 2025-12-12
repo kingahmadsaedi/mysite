@@ -5,9 +5,16 @@ from django.urls import is_valid_path
 from blog.models import Post,Comment
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 from blog.forms import CommentForm
-
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+
+
 # Create your views here.
+# Source - https://stackoverflow.com/a
+# Posted by Hasan Ramezani
+# Retrieved 2025-12-12, License - CC BY-SA 3.0
+
+@login_required
 def blog_view(request,**kwargs):
     posts=Post.objects.filter(status=1)
     if kwargs.get('cat_name') !=None:
